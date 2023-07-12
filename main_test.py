@@ -83,3 +83,80 @@ def test_two_read_json():
     read_data = read_json(filepath)
 
     assert read_data is None
+
+
+def test_one_generate_schema():
+    obj = {
+        "number": 10
+    }
+
+    actual_schema = {
+        "number": {
+            "type": "int",
+            "tag": "",
+            "description": "",
+            "required": False
+        }
+    }
+
+    generated_schema = generate_schema(obj)
+
+    assert actual_schema == generated_schema
+
+def test_two_generate_schema():
+    obj = {
+        "a_string": "String"
+    }
+
+    actual_schema = {
+        "a_string": {
+            "type": "string",
+            "tag": "",
+            "description": "",
+            "required": False
+        }
+    }
+
+    generated_schema = generate_schema(obj)
+
+    assert actual_schema == generated_schema
+
+def test_three_generate_schema():
+    obj = {
+        "array": ["One", "Two"]
+    }
+
+    actual_schema = {
+        "key_one": {
+            "type": "enum",
+            "tag": "",
+            "description": "",
+            "required": False
+        }
+    }
+
+    generated_schema = generate_schema(obj)
+
+    assert actual_schema == generated_schema
+
+def test_four_generate_schema():
+    obj = {
+        "dict": {
+            "one": 1,
+            "two": 2,
+            "three": 3
+        }
+    }
+
+    actual_schema = {
+        "dict": {
+            "type": "array",
+            "tag": "",
+            "description": "",
+            "required": False
+        }
+    }
+
+    generated_schema = generate_schema(obj)
+
+    assert actual_schema == generated_schema
