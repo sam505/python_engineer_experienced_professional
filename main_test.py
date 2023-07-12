@@ -128,10 +128,24 @@ def test_three_generate_schema():
 
     actual_schema = {
         "array": {
-            "type": "enum",
+            "type": "array",
             "tag": "",
             "description": "",
-            "required": False
+            "required": False,
+            "items": [
+                {
+                    "type": "enum",
+                    "tag": "",
+                    "description": "",
+                    "required": False
+                },
+                {
+                    "type": "enum",
+                    "tag": "",
+                    "description": "",
+                    "required": False
+                }
+            ]
         }
     }
 
@@ -150,10 +164,30 @@ def test_four_generate_schema():
 
     actual_schema = {
         "dict": {
-            "type": "array",
+            "type": "object",
             "tag": "",
             "description": "",
-            "required": False
+            "required": False,
+            "properties": {
+                "one": {
+                    "type": "integer",
+                    "tag": "",
+                    "description": "",
+                    "required": False,
+                },
+                "two": {
+                    "type": "integer",
+                    "tag": "",
+                    "description": "",
+                    "required": False,
+                },
+                "three": {
+                    "type": "integer",
+                    "tag": "",
+                    "description": "",
+                    "required": False,
+                }
+            }
         }
     }
 
