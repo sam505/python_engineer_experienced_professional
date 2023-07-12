@@ -32,6 +32,10 @@ def read_json(filepath:str) -> dict:
 
 
 def main():
+    folder = "data"
+    for filename in os.listdir(folder):
+        read_json(os.path.join(folder, filename))
+
     pass
 
 
