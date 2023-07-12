@@ -23,11 +23,45 @@ def read_json(filepath:str) -> dict:
     try:
         with open(filepath, "r") as file:
             obj = json.load(file)
-            logging.debug("JSON file exists...")
+            logger.debug("JSON file exists...")
             return obj
     except FileNotFoundError:
-        logging.debug("JSON file not found")
+        logger.debug("JSON file not found")
 
+
+def generate_schema(obj: dict) -> dict:
+    """Function takes a JSON object and returns the schema of the JSON object
+
+    Args:
+        obj (dict): JSON object
+
+    Returns:
+        dict: JSON object representing the schema of the JSON object passed to the function
+    """
+    TYPES = {
+        type(1): 'integer',
+        type(1.2): 'float',
+        type("abc"): 'string',
+        type(True): 'boolean',
+        type([]): 'enum',
+        type({}): 'array',
+        }
+
+    logger.debug("Generating schema...")
+    schema = {}
+
+    schema_format = {
+        "type": "",
+        "tag": "",
+        "description": "",
+        "required": False
+    }
+
+    for obj_key in obj:
+        schema_format["type"] = TYPES[type(obj[obj_key])]
+        schema[obj_key] = schema_format
+
+    return schema
 
 
 
