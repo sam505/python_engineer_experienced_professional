@@ -92,7 +92,7 @@ def test_one_generate_schema():
 
     actual_schema = {
         "number": {
-            "type": "int",
+            "type": "integer",
             "tag": "",
             "description": "",
             "required": False
@@ -127,7 +127,7 @@ def test_three_generate_schema():
     }
 
     actual_schema = {
-        "key_one": {
+        "array": {
             "type": "enum",
             "tag": "",
             "description": "",
