@@ -2,7 +2,7 @@ from main import *
 
 
 def test_one_read_json():
-    filename = "data/data_1.json"
+    filepath = "data/data_1.json"
 
     actual_data = {
     "attributes": {
@@ -72,13 +72,13 @@ def test_one_read_json():
     }
   }
     
-    read_data = read_json(filename)
+    read_data = read_json(filepath)
 
     assert actual_data == read_data
 
 
 def test_two_read_json():
-    filename = "data/data_not_exist.json"
+    filepath = "data/data_not_exist.json"
 
     actual_data = {
     "attributes": {
@@ -148,6 +148,6 @@ def test_two_read_json():
     }
   }
     
-    read_data = read_json(filename)
+    read_data = read_json(filepath)
 
     assert actual_data == read_data
