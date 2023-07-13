@@ -120,13 +120,7 @@ def save_schema(obj: dict, filename: str) -> str:
     new_filename = filename.replace("data", "schema")
     filepath = os.path.join(schema_dir, new_filename)
     with open(filepath, "w") as file:
-            json.dump(
-                {
-                    "$schema": "http://json-schema.org/draft-04/schema#",
-                    "type": "object",
-                    "properties": obj
-                }
-                , file, indent=4)
+            json.dump(obj, file, indent=4)
     logger.debug(obj)
 
     return None
