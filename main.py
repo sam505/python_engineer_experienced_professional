@@ -21,6 +21,11 @@ TYPES = {
         }
 
 
+# data folder
+data_folder = "data"  # directory containing JSON files
+schema_dir = "schema"  # directory to save generated schema JSON files
+
+
 def read_json(filepath:str) -> dict:
     """This function takes filepath of a JSON file as a parameters, reads the file and returns the json object
 
@@ -111,8 +116,7 @@ def save_schema(obj: dict, filename: str) -> str:
     Returns:
         str: path of the saved JSON schema file 
     """
-    schema_dir = "schema"
-
+    
     # check if schema dir exists and create if it does not exist
     if not os.path.isdir(schema_dir):
         os.mkdir(schema_dir)
@@ -127,7 +131,6 @@ def save_schema(obj: dict, filename: str) -> str:
 
 
 def main():
-    data_folder = "data"
     for filename in os.listdir(data_folder):
         json_obj = read_json(os.path.join(data_folder, filename))
         schema = generate_schema(json_obj)
